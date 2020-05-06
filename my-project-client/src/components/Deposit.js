@@ -17,7 +17,6 @@ class Deposit extends Component {
 
     handleDeposit = (e) => {
         e.preventDefault()
-        console.log(this.props.username)
         API.deposit(this.state)
         .then(json => this.props.depositSuccess(json.accounts))
         .then(() => this.props.history.push('/overview'))

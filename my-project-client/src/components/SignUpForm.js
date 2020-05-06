@@ -26,7 +26,7 @@ class SignUpForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     API.signUp(this.state)
-    .then(() => this.props.history.push('/overview'))
+    .then(() => this.props.history.push('/sign-in'))
   }
 
   render() {
