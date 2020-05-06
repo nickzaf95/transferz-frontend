@@ -8,6 +8,7 @@ import SignInForm from './components/SignInForm'
 import Deposit from './components/Deposit'
 import Withdraw from './components/Withdraw'
 import Transfer from './components/Transfer'
+import SignUpForm from './components/SignUpForm'
 
 // For accounts get pass in all the accounts in sign in to the state
 // Pass the state to all the components
@@ -79,7 +80,7 @@ class App extends React.Component {
           <Route exact path="/deposit" component={() => <Deposit username={this.state.username} depositSuccess={this.deposit}/>} />
           <Route exact path="/withdraw" component={() => <Withdraw username={this.state.username} withdrawalSuccess={this.withdraw}/>} />
           <Route exact path="/transfer" component={() => <Transfer username={this.state.username} transferSuccess={this.transfer}/>} />
-
+          <Route exact path="/sign-up" component={() => <SignUpForm />} />
       </Router>
     );
   }

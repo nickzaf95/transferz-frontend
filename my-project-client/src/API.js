@@ -5,6 +5,7 @@ const validateURL = `${baseURL}/validate`
 const depositURL = `${baseURL}/deposit`
 const withdrawURL = `${baseURL}/withdraw`
 const transferURL = `${baseURL}/transfer`
+const signUpURL = `${baseURL}/sign-up`
 
 // Make a post request to a given URL with a given data object as the body and return the Promise
 const post = (url, data) => {
@@ -58,5 +59,9 @@ const signIn = data => {
   return post(signInURL, data).then(response => response.json())
 }
 
+const signUp = data => {
+    return post(signUpURL, data).then(res => res.json())
+}
+
 // Export the necessary functions as part of one object which we will import elsewhere
-export default { signIn, validate, get, deposit, withdraw, transfer }
+export default { signIn, validate, get, deposit, withdraw, transfer, signUp }

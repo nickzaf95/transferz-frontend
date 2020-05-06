@@ -64,6 +64,16 @@ const NavBar = (props) => {
       </li>
     }
 
+    <li>
+        <NavLink
+        to="/sign-up"
+        exact
+        // style={Link}
+        >
+          Sign Up
+        </NavLink>
+    </li>
+
     </ul>
   );
 };
