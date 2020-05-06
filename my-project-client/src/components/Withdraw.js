@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button, Checkbox } from 'semantic-ui-react';
 import API from '../API';
-// Create a form to deposit
+import { withRouter } from 'react-router-dom'
+// Create a form to withdraw
 
 class Withdraw extends Component {
 
@@ -18,6 +19,7 @@ class Withdraw extends Component {
         e.preventDefault()
         API.withdraw(this.state)
         .then(json => this.props.withdrawalSuccess(json.accounts))
+        .then(() => this.props.history.push('/overview'))
 
     }
 
@@ -101,4 +103,4 @@ class Withdraw extends Component {
     }
 }
 
-export default Withdraw
+export default withRouter(Withdraw)

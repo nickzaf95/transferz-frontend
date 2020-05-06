@@ -59,6 +59,14 @@ class App extends React.Component {
     })
   }
 
+  isValid = () => {
+    if (this.state.username) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   // Sign the user out by setting the username to null and removing the token key from localStorage
   signOut = () => {
     this.setState({
@@ -75,12 +83,12 @@ class App extends React.Component {
       <Router>
           <NavBar username={this.state.username} signOut={this.signOut}/>
           { this.state.username ? <h1>Welcome back, {this.state.username}</h1> : <h1>Welcome to Transferz!</h1> }
-          <Route exact path="/sign-in" component={() => <SignInForm signIn={this.signIn}/>}/>
-          <Route exact path="/overview" component={() => <Overview accounts={this.state.accounts} username={this.state.username} /> } />
-          <Route exact path="/deposit" component={() => <Deposit username={this.state.username} depositSuccess={this.deposit}/>} />
-          <Route exact path="/withdraw" component={() => <Withdraw username={this.state.username} withdrawalSuccess={this.withdraw}/>} />
-          <Route exact path="/transfer" component={() => <Transfer username={this.state.username} transferSuccess={this.transfer}/>} />
-          <Route exact path="/sign-up" component={() => <SignUpForm />} />
+          <Route exact path="/sign-in" component={() => <SignInForm signIn={this.signIn} isValid={this.isValid} />}/>
+          <Route exact path="/overview" component={() => <Overview accounts={this.state.accounts} username={this.state.username} isValid={this.isValid} /> } />
+          <Route exact path="/deposit" component={() => <Deposit username={this.state.username} depositSuccess={this.deposit} isValid={this.isValid} />} />
+          <Route exact path="/withdraw" component={() => <Withdraw username={this.state.username} withdrawalSuccess={this.withdraw} isValid={this.isValid} />} />
+          <Route exact path="/transfer" component={() => <Transfer username={this.state.username} transferSuccess={this.transfer} isValid={this.isValid} />} />
+          <Route exact path="/sign-up" component={() => <SignUpForm isValid={this.isValid} />} />
       </Router>
     );
   }

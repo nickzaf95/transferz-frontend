@@ -1,6 +1,7 @@
 import React from 'react'
 import API from "../API"
 import { Button, Form } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 
 class SignUpForm extends React.Component {
@@ -24,8 +25,8 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // Send the data from the form to the server in order to authenticate the user
     API.signUp(this.state)
+    .then(() => this.props.history.push('/overview'))
   }
 
   render() {
@@ -69,4 +70,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm
+export default withRouter(SignUpForm)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Checkbox } from 'semantic-ui-react';
 import API from '../API';
+import { withRouter } from 'react-router-dom'
 // Create a form to deposit
 
 class Deposit extends Component {
@@ -19,6 +20,7 @@ class Deposit extends Component {
         console.log(this.props.username)
         API.deposit(this.state)
         .then(json => this.props.depositSuccess(json.accounts))
+        .then(() => this.props.history.push('/overview'))
 
     }
 
@@ -102,4 +104,4 @@ class Deposit extends Component {
     }
 }
 
-export default Deposit
+export default withRouter(Deposit)
